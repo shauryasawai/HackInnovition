@@ -22,6 +22,7 @@ urlpatterns=[
   path('reset/done/', CustomPasswordResetCompleteView.as_view(), name='password_reset_complete'),
   path('bmi/', bmi_calculator, name='bmi_calculator'),
   path('diet/', select_college_view, name='select_college'),
+  path('predict/', views.predict_health, name='predict_health'),
 
 
 

@@ -73,3 +73,13 @@ class BMICalculatorForm(forms.Form):
 class CollegeForm(forms.Form):
     college = forms.ModelChoiceField(queryset=College.objects.all(), label="Select Your College")
     goal = forms.ModelChoiceField(queryset=Goal.objects.all(), label="Select Your Goal")
+    
+class HealthInputForm(forms.Form):
+    AGE_CHOICES = [(i, i) for i in range(18, 101)]
+    GENDER_CHOICES = [('Male', 'Male'), ('Female', 'Female')]
+    FAMILY_HISTORY_CHOICES = [('Yes', 'Yes'), ('No', 'No')]
+
+    age = forms.ChoiceField(choices=AGE_CHOICES)
+    gender = forms.ChoiceField(choices=GENDER_CHOICES)
+    diastolic_bp = forms.IntegerField(label="Diastolic Blood Pressure")
+    family_history = forms.ChoiceField(choices=FAMILY_HISTORY_CHOICES)

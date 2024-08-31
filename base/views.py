@@ -294,3 +294,77 @@ def select_college_view(request):
         'form': form,
         'diet_plan': diet_plan,
     })
+    
+# predictions/views.py
+import pandas as pd
+from django.shortcuts import render
+from .forms import HealthInputForm
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.preprocessing import LabelEncoder
+
+# Pretrained model components (normally you'd load a pre-trained model from disk)
+gender_encoder = LabelEncoder()
+family_history_encoder = LabelEncoder()
+class_encoder = LabelEncoder()
+
+# Mock training data (in real scenario, train and load from disk)
+# Similar to the code above, data and encoders are already trained
+data = {
+    'Age': [45, 30, 60, 50, 35, 42, 55, 28, 65, 38, 52, 48, 70, 33, 57, 44, 29, 62, 54, 36, 68, 40, 47, 25, 58, 37, 66, 41, 32, 59, 53, 34, 64, 43, 49, 27, 61, 39, 67, 46, 19, 22, 21, 23, 18, 24],
+    'Gender': ['Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female'],
+    'Diastolic_BP': [85, 75, 90, 80, 70, 88, 92, 68, 95, 78, 82, 84, 96, 72, 87, 83, 74, 91, 86, 76, 93, 79, 85, 70, 89, 77, 94, 81, 73, 88, 90, 71, 92, 80, 84, 69, 88, 75, 91, 82, 65, 68, 70, 69, 66, 72],
+    'Family_History': ['Yes', 'No', 'Yes', 'Yes', 'No', 'Yes', 'Yes', 'No', 'Yes', 'No', 'Yes', 'No', 'Yes', 'No', 'Yes', 'Yes', 'No', 'Yes', 'Yes', 'No', 'Yes', 'No', 'Yes', 'No', 'Yes', 'No', 'Yes', 'Yes', 'No', 'Yes', 'Yes', 'No', 'Yes', 'Yes', 'Yes', 'No', 'Yes', 'No', 'Yes', 'Yes', 'No', 'No', 'Yes', 'No', 'No', 'Yes'],
+    'FBS': [110, 90, 130, 105, 95, 112, 140, 85, 145, 98, 108, 102, 150, 92, 135, 110, 89, 125, 130, 94, 140, 100, 115, 88, 138, 96, 145, 106, 91, 132, 128, 87, 142, 103, 118, 86, 135, 97, 144, 110, 82, 85, 105, 87, 89, 115],
+    'Blood_Sugar_Class': ['Prediabetes', 'Normal', 'Diabetes', 'Prediabetes', 'Normal', 'Prediabetes', 'Diabetes', 'Normal', 'Diabetes', 'Normal', 'Prediabetes', 'Prediabetes', 'Diabetes', 'Normal', 'Diabetes', 'Prediabetes', 'Normal', 'Prediabetes', 'Diabetes', 'Normal', 'Diabetes', 'Prediabetes', 'Prediabetes', 'Normal', 'Diabetes', 'Normal', 'Diabetes', 'Prediabetes', 'Normal', 'Diabetes', 'Prediabetes', 'Normal', 'Diabetes', 'Prediabetes', 'Prediabetes', 'Normal', 'Diabetes', 'Normal', 'Diabetes', 'Prediabetes', 'Normal', 'Normal', 'Prediabetes', 'Normal', 'Normal', 'Prediabetes']
+}
+
+df = pd.DataFrame(data)
+
+# Encode categorical data
+df['Gender'] = gender_encoder.fit_transform(df['Gender'])
+df['Family_History'] = family_history_encoder.fit_transform(df['Family_History'])
+df['Blood_Sugar_Class'] = class_encoder.fit_transform(df['Blood_Sugar_Class'])
+
+# Features and labels
+X = df[['Age', 'Gender', 'Diastolic_BP', 'Family_History']]
+y_class = df['Blood_Sugar_Class']
+y_fbs = df['FBS']
+
+# Train models
+model_class = RandomForestClassifier(random_state=42)
+model_class.fit(X, y_class)
+
+model_fbs = RandomForestClassifier(random_state=42)
+model_fbs.fit(X, y_fbs)
+
+def predict_health(request):
+    if request.method == 'POST':
+        form = HealthInputForm(request.POST)
+        if form.is_valid():
+            age = form.cleaned_data['age']
+            gender = gender_encoder.transform([form.cleaned_data['gender']])[0]
+            diastolic_bp = form.cleaned_data['diastolic_bp']
+            family_history = family_history_encoder.transform([form.cleaned_data['family_history']])[0]
+
+            # Prediction
+            new_data = pd.DataFrame({
+                'Age': [int(age)],
+                'Gender': [gender],
+                'Diastolic_BP': [diastolic_bp],
+                'Family_History': [family_history]
+            })
+
+            class_pred = model_class.predict(new_data)[0]
+            fbs_pred = model_fbs.predict(new_data)[0]
+
+            result = {
+                'blood_sugar_class': class_encoder.inverse_transform([class_pred])[0],
+                'fbs': fbs_pred
+            }
+
+            return render(request, 'base/result1.html', {'result': result})
+
+    else:
+        form = HealthInputForm()
+
+    return render(request, 'base/input.html', {'form': form})

@@ -1,0 +1,72 @@
+<!-- predictions/templates/predictions/result.html -->
+<!DOCTYPE html>
+<html lang="en">
+    <style>body {
+        background-color: #121212;
+        color: #E0E0E0;
+        background-image: url("https://wallpaperaccess.com/full/6890234.jpg");
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+    }
+    
+    h2 {
+        color: #FFFFFF;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    .result-box {
+        background-color: #1E1E1E;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        width: 300px;
+        text-align: center;
+    }
+    
+    p {
+        color: #B3B3B3;
+        font-size: 18px;
+        margin: 10px 0;
+    }
+    
+    strong {
+        color: #E0E0E0;
+    }
+    
+    a {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #6200EE;
+        color: #FFFFFF;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+    
+    a:hover {
+        background-color: #3700B3;
+    }
+    
+    a:focus {
+        outline: none;
+    }
+.h9{
+    font-size:27px;
+}</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Health Prediction Result</title>
+</head>
+<body>
+    <h2 class='h9'>Prediction Result</h2>
+    <p class='h9'><strong>Blood Sugar Class:</strong> {{ result.blood_sugar_class }}</p>
+    <p class='h9'><strong>Fasting Blood Sugar (FBS):</strong> {{ result.fbs }}</p>
+    <a href="{% url 'predict_health' %]"

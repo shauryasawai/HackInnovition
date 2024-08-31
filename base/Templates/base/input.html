@@ -1,0 +1,117 @@
+<!-- predictions/templates/predictions/input.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>/* predictions/static/predictions/styles.css */
+        body {
+            background-color: #121212;
+            color: #E0E0E0;
+            background-image: url("https://wallpaperaccess.com/full/6890234.jpg");
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        h2 {
+            color: #FFFFFF;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        form {
+            background-color: #1E1E1E;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 300px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #B3B3B3;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            background-color: #2C2C2C;
+            color: #E0E0E0;
+            box-sizing: border-box;
+        }
+        
+        input[type="text"]::placeholder,
+        input[type="number"]::placeholder {
+            color: #888;
+        }
+        
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #6200EE;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #3700B3;
+        }
+        
+        button[type="submit"]:focus {
+            outline: none;
+        }
+        
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #6200EE;
+        }
+        
+        form p {
+            color: #B3B3B3;
+            text-align: center;
+        }
+        
+        a {
+            color: #BB86FC;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        .title{
+            text-align:center;
+            font-size:40px;
+            
+
+        }
+        </style>
+    <meta charset="UTF-8">
+    <title>Health Prediction</title>
+</head>
+<body>
+    <h2 class='title'>Enter Health Information</h2>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>
