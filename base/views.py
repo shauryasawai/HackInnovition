@@ -100,7 +100,7 @@ def login_view(request):
             print("User authenticated:", user)
             print("Session username after login:", request.session.get('username'))
             
-            return redirect('accounts/profile/') 
+            return redirect('home/') 
         else:
             messages.error(request, 'Invalid username or password.')
     return render(request, 'base/login.html')
@@ -211,3 +211,84 @@ def send_password_reset_email(request):
         form = PasswordResetForm()
     return render(request, 'base/password_reset_form.html', {'form': form})
 
+@login_required
+def home_view(request):
+    return render(request, 'base/home.html')
+
+@login_required
+def fitness_view(request):
+    return render(request, 'base/fitness.html')
+
+@login_required
+def health_view(request):
+    return render(request, 'base/health.html')
+
+@login_required
+def medication(request):
+    return render(request, 'base/medication.html')
+
+@login_required
+def nutrition_view(request):
+    return render(request, 'base/nutrition.html')
+
+@login_required
+def book_call(request):
+    if request.method == 'POST':
+        form = CallBookingForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('success')
+    else:
+        form = CallBookingForm()
+    return render(request, 'base/book_call.html', {'form': form})
+
+def success(request):
+    return HttpResponse("Your call has been successfully booked!")
+def index(request):
+    return render(request, 'base/index.html')
+
+
+
+@login_required
+def quiz_list(request):
+    quizzes = Quiz.objects.all()
+    return render(request, 'base/quiz_list.html', {'quizzes': quizzes})
+
+@login_required
+def take_quiz(request, quiz_id):
+    quiz = get_object_or_404(Quiz, pk=quiz_id)
+    if request.method == 'POST':
+        for question in quiz.questions.all():
+            selected_option = request.POST.get(str(question.id))
+            UserResponse.objects.create(
+                user=request.user,
+                question=question,
+                selected_option=selected_option
+            )
+        return render(request, 'base/quiz_result.html', {'quiz': quiz})
+    else:
+        return render(request, 'base/take_quiz.html', {'quiz': quiz})
+    
+def about_us(request):
+    return render(request, 'base/about.html')
+def bmi_calculator(request):
+    return render(request, 'base/bmi.html')
+
+from .forms import CollegeForm
+from .models import DietPlan
+
+def select_college_view(request):
+    form = CollegeForm()
+    diet_plan = None
+
+    if request.method == 'POST':
+        form = CollegeForm(request.POST)
+        if form.is_valid():
+            college = form.cleaned_data['college']
+            goal = form.cleaned_data['goal']
+            diet_plan = DietPlan.objects.filter(college=college, goal=goal)
+
+    return render(request, 'base/select_college.html', {
+        'form': form,
+        'diet_plan': diet_plan,
+    })
