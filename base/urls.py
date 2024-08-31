@@ -23,6 +23,7 @@ urlpatterns=[
   path('bmi/', bmi_calculator, name='bmi_calculator'),
   path('diet/', select_college_view, name='select_college'),
   path('predict/', views.predict_health, name='predict_health'),
+  path('healthpredictor/', views.predictor_view, name='predictor_view'),
 
 
 

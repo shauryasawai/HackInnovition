@@ -368,3 +368,7 @@ def predict_health(request):
         form = HealthInputForm()
 
     return render(request, 'base/input.html', {'form': form})
+
+@login_required
+def predictor_view(request):
+    return render(request, 'base/health_predictor.html')
