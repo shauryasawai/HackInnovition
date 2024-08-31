@@ -273,6 +273,8 @@ def about_us(request):
     return render(request, 'base/about.html')
 def bmi_calculator(request):
     return render(request, 'base/bmi.html')
+def fitness(request):
+    return render(request, 'base/bmi.html')
 
 from .forms import CollegeForm
 from .models import DietPlan
