@@ -8,11 +8,11 @@
             <div class="h-12 w-12 bg-zinc-700 rounded-[3rem]"></div>
         </div>
         <Button class="w-28" variant="outline">Home</Button>
-        <Button class="w-28" variant="default">Nutrition</Button>
-        <Button class="w-28" variant="default">Mental Health</Button>
         <Button class="w-28" variant="default">Fitness</Button>
+        <Button class="w-28" variant="default">Mental Health</Button>
+        <Button class="w-28" variant="default">Medication</Button>
         <Button class="w-28" variant="default">Yoga</Button>
-        <Button class="w-28" variant="default">Feedback</Button>
+        <Button class="w-28" variant="default">Nutrition</Button>
         <Button class="w-28" variant="outline">About us</Button>
         <div class="relative bg-zinc-800 h-4 grow flex justify-center items-center">
             <div class="h-12 w-12 bg-zinc-700 rounded-[3rem]"></div>

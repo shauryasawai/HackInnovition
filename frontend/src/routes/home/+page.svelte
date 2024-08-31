@@ -6,5 +6,12 @@
     <Navbar></Navbar>
     <span class="font-greatVibes text-[10rem] mt-20">Life Quest</span>
 
-    <ShowcaseCarousel></ShowcaseCarousel>
+
+    <div class="w-full flex flex-row">
+
+        <div class="h-[3000px] w-1/2" id="right-div">
+            <div class="h-[300px]"></div>
+            <ShowcaseCarousel></ShowcaseCarousel>
+        </div>
+    </div>
 </div>
