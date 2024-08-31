@@ -211,6 +211,3 @@ def send_password_reset_email(request):
         form = PasswordResetForm()
     return render(request, 'base/password_reset_form.html', {'form': form})
 
-def logout_view(request):
-    logout(request)
-    return redirect('login')
