@@ -136,6 +136,17 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LANGUAGE_CODE = "en-us"
+
+TIME_ZONE = "Asia/Kolkata"
+
+USE_I18N = True
+
+USE_TZ = True
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True 
+
+DATE_FORMAT = "d/m/y"
 # Email Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -143,3 +154,7 @@ EMAIL_PORT = 465
 EMAIL_USE_SSL = True  
 EMAIL_HOST_USER = 'vaibhavpatyal507@gmail.com' 
 EMAIL_HOST_PASSWORD = 'bssewfuiqrilnvou'
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_COOKIE_AGE = 172800
