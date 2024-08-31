@@ -24,6 +24,12 @@ urlpatterns=[
   path('diet/', select_college_view, name='select_college'),
   path('predict/', views.predict_health, name='predict_health'),
   path('healthpredictor/', views.predictor_view, name='predictor_view'),
+  path('cardio/', views.cardio_view, name='cardio_view'),
+  path('meditation/', views.meditation_view, name='meditation_view'),
+  path('weight_training/', views.weight_training_view, name='weight_training_view'),
+  path('yoga/', views.yoga_view, name='yoga_view'),
+
+
 
 
 
