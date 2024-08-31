@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meditation Page</title>
+    <link rel="stylesheet" href="meditation.css">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #454545;
+        color: #333;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+    }
+
+    .heading {
+        color: white;
+        text-align: center;
+        font-size: 50px;
+        font-weight: bold;
+    }
+
+    .main {
+        width: 80%;
+        margin: 20px auto;
+        background-color: black;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .section {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        gap: 40px;
+        margin: 100px auto;
+    }
+
+    .sect-left {
+        width: 40%;
+        font-size: 30px;
+    }
+
+    .sect-right {
+        width: 60%;
+    }
+
+    .page1 {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        gap: 100px;
+        height: 80vh;
+        margin: 100px auto;
+    }
+
+    .page1>div:first-child {
+        width: 50%;
+    }
+
+    .page1>div:nth-child(2) {
+        width: 50%;
+        color: white;
+        text-align: center;
+    }
+
+    h2 {
+        color: #f4e32e;
+        /* Changed from h1 to h2 for consistency */
+    }
+
+    p {
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto 20px;
+        border-radius: 8px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    ul li {
+        background-color: #ecf0f1;
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+    }
+
+    ul li span {
+        font-weight: bold;
+    }
+
+    ul li img {
+        margin-right: 20px;
+        border-radius: 8px;
+        height: 100px;
+        width: 100px;
+    }
+
+    ul li:hover {
+        background: #80cbc4;
+        /* Slightly darker teal on hover */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+        .main {
+            width: 90%;
+        }
+
+        ul li {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        ul li img {
+            margin-bottom: 10px;
+            margin-right: 0;
+        }
+    }
+</style>
+
+<body>
+    <div class="main">
+        <h1 class="heading">Meditation: Calm your mind, find peace.</h2>
+            <div class="section">
+                <div class="sect-left">
+                    <h2>What is Meditation?</h2>
+                    <p>Meditation is a practice that involves training your mind to focus and redirect your thoughts.
+                        It’s a
+                        simple yet powerful tool to enhance mental clarity, reduce stress, and promote emotional
+                        well-being.
+                        Through meditation, you can develop a deeper awareness of your thoughts, feelings, and
+                        surroundings.
+                    </p>
+                </div>
+
+                <div class="sect-right">
+                    <img src="./Assets/meditation.jpg" alt="Meditation Image">
+                </div>
+            </div>
+
+            <div class="page1">
+                <h2>The Benefits of Meditation:</h2>
+                <ul>
+                    <li><strong>Reduces Stress:</strong> Regular meditation helps lower stress levels by calming the
+                        mind and body.</li>
+                    <li><strong>Improves Focus:</strong> It enhances your ability to concentrate and stay present in the
+                        moment.</li>
+                    <li><strong>Promotes Emotional Health:</strong> Meditation can lead to a more positive outlook on
+                        life and increased self-awareness.</li>
+                    <li><strong>Enhances Sleep Quality:</strong> Practicing meditation before bed can improve sleep by
+                        promoting relaxation.</li>
+                    <li><strong>Supports Overall Well-being:</strong> Meditation has been linked to lower blood
+                        pressure, better heart health, and a strengthened immune system.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>How Does Meditation Work?</h2>
+                <p>Meditation involves sitting quietly, focusing on your breath, a mantra, or a particular object, and
+                    gently guiding your mind back whenever it wanders. It’s about being present and observing your
+                    thoughts without judgment. Over time, this practice trains your mind to stay focused, calm, and
+                    clear, even in the midst of life’s challenges.</p>
+            </div>
+
+            <div class="section">
+                <h2>Types of Meditation</h2>
+                <ul>
+                    <li><strong>Mindfulness Meditation:</strong> Focus on the present moment and observe your thoughts
+                        and feelings without judgment.</li>
+                    <li><strong>Guided Meditation:</strong> Listen to a guide who leads you through visualizations and
+                        breathing exercises.</li>
+                    <li><strong>Transcendental Meditation:</strong> Use a mantra or repeated phrase to help you focus
+                        and reach a deep state of relaxation.</li>
+                    <li><strong>Loving-Kindness Meditation:</strong> Cultivate feelings of compassion and love towards
+                        yourself and others.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Who Can Meditate?</h2>
+                <p>Meditation is for everyone, regardless of age or experience. You don’t need any special equipment or
+                    prior knowledge to start. All it takes is a few minutes each day to experience the benefits of
+                    meditation.</p>
+            </div>
+
+            <div class="section">
+                <h2>How to Begin?</h2>
+                <ul>
+                    <li>
+                        <img src="./Assets/meditaitonplace.jpeg" alt="Quiet Space Image">
+                        <strong>Choose a Quiet Space:</strong> Find a place where you won’t be disturbed.
+                    </li>
+                    <li>
+                        <img src="./Assets/clock.jpeg" alt="Set a Time Image">
+                        <strong>Set a Time:</strong> Start with just 5-10 minutes each day.
+                    </li>
+                    <li>
+                        <img src="./Assets/sittingmedi.jpeg" alt="Get Comfortable Image">
+                        <strong>Get Comfortable:</strong> Sit in a comfortable position, either on the floor or in a
+                        chair.
+                    </li>
+                    <li>
+                        <img src="./Assets/breathe.jpeg" alt="Focus on Your Breath Image">
+                        <strong>Focus on Your Breath:</strong> Pay attention to your breathing, noticing each inhale and
+                        exhale.
+                    </li>
+                    <li>
+                        <strong>Be Patient:</strong> It’s normal for your mind to wander. Simply bring your focus back
+                        to your breath.
+                    </li>
+                </ul>
+            </div>
+    </div>
+</body>
+
+</html>

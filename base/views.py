@@ -372,3 +372,15 @@ def predict_health(request):
 @login_required
 def predictor_view(request):
     return render(request, 'base/health_predictor.html')
+
+def cardio_view(request):
+    return render(request, 'base/cardio.html')
+
+def meditation_view(request):
+    return render(request, 'base/meditation.html')
+
+def weight_training_view(request):
+    return render(request, 'base/weight-training.html')
+
+def yoga_view(request):
+    return render(request, 'base/yoga.html')
