@@ -5,8 +5,8 @@ from .views import logout_view, reset_password,CustomPasswordResetCompleteView, 
 
 urlpatterns=[
   path('', views.login_view , name='login'),
-  path('home/', views.home_view , name='login'),
-  path('about/', views.about_us , name='login'),
+  path('home/', views.home_view , name='home'),
+  path('about/', views.about_us , name='about_us'),
   path('signup/', views.signup, name='signup'),
   path('forgot-password/', views.forgot_password, name='forgot-password'),
   path('fitness/', views.fitness_view , name='Fitness'),

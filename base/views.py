@@ -118,7 +118,6 @@ def signup(request):
             subject = 'Welcome to Our Site'
             message = render_to_string('base/welcome_email.html', {'user': user})
             send_mail(subject, '', settings.EMAIL_HOST_USER, [user.email], html_message=message)
-
             return redirect('custom_login')  
     else:
         form = SignUpForm()
