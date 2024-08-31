@@ -55,7 +55,9 @@ const config: Config = {
 				sm: "calc(var(--radius) - 4px)"
 			},
 			fontFamily: {
-				sans: [...fontFamily.sans]
+				sans: ["geist-sans", ...fontFamily.sans],
+				greatVibes: ["Great Vibes"],
+				kodchasan: ["Kodchasan"]
 			}
 		}
 	},

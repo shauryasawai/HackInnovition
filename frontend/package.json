@@ -36,6 +36,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"bits-ui": "^0.21.13",
 		"clsx": "^2.1.1",
 		"mode-watcher": "^0.4.1",
 		"tailwind-merge": "^2.5.2",
