@@ -5,226 +5,243 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yoga</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-</head>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #454545;
-        color: #333;
-        line-height: 1.6;
-        margin: 0;
-        padding: 0;
-    }
+        /* Video Background */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* Show the entire video without cropping */
+            z-index: -1;
+            background-color: black;
+            /* Fallback color for aspect ratio gaps */
+        }
 
-    .heading {
-        color: white;
-        text-align: center;
-        font-size: 50px;
-        font: bold;
-    }
+        /* Overlay to ensure content visibility */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0);
+            z-index: 0;
+        }
 
-    .main {
-        width: 80%;
-        margin: 20px auto;
-        background-color: black;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .page1 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 100px;
-        height: 80vh;
-        font-size: 35px;
-    }
-
-    .page1:first-child {
-        width: 50%
-        
-    }
-
-    .page:nth-child(2) {
-        width: 50%;
-        color: white;
-        text-align: center;
-    }
-
-    h2 {
-        color: #f4e32e;
-    }
-
-    p {
-        font-size: 20px;
-        margin-bottom: 20px;
-        color: white;
-    }
-
-    img {
-        display: block;
-        margin: 0 auto 20px;
-        border-radius: 8px;
-    }
-
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    ul li {
-        background-color: white;
-        margin: 15px;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        display: flex;
-        align-items: center;
-        padding: 6px;
-    }
-
-    ul li span {
-    font-weight: bold;
-    color: white;
-    background-color: #605f5f;
-    padding: 6px;
-    margin: 0 8px;
-    border-radius: 8px;
-    display: inline-block; /* This ensures the width and height are respected */
-    width: 100px;
-    text-align: center; /* Centers the text horizontally */
-}
-
-    ul li img {
-        margin-right: 20px;
-        border-radius: 8px;
-        height: 100px;
-        width: 100px;
-    }
-
-    .page2 {
-        background-color: black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 40px;
-        min-height: 85vh;
-    }
-
-    .left2 {
-        background-color: black;
-        max-width: 40%;
-    }
-
-    .right2 {
-        max-width: 50%;
-    }
-
-    .page3 {
-        background-color: black;
-        display: flex;
-        justify-content: center;
-        align-items: start;
-        gap: 40px;
-        min-height: 85vh;
-    }
-
-    .left3 {
-        max-width: 50%;
-    }
-
-    .right3 {
-        max-width: 40%;
-    }
-
-    @media (max-width: 768px) {
+        /* Main content styling */
         .main {
-            width: 90%;
+            position: relative;
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            color: white;
+        }
+
+        .heading {
+            color: white;
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        .page1,
+        .page2,
+        .page3 {
+            margin-bottom: 50px;
+        }
+
+        .page1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 100px;
+            height: 80vh;
+            font-size: 35px;
+        }
+
+        h2 {
+            font-size: 40px;
+            color: #f4e32e;
+        }
+
+        p {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto 20px;
+            border-radius: 8px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
         }
 
         ul li {
-            flex-direction: column;
-            align-items: flex-start;
+            background-color: #373737;
+            margin: 6px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        ul li span {
+            font-weight: bold;
+            color: white;
+            background-color: #2e2e2e;
+            padding: 6px;
+            margin: 0 8px;
+            border-radius: 8px;
+            display: inline-block;
+            width: 100px;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
         }
 
         ul li img {
-            margin-bottom: 10px;
-            margin-right: 0;
+            margin-right: 20px;
+            border-radius: 8px;
+            height: 100px;
+            width: 100px;
         }
-    }
-</style>
+
+        .benefits-of-yoga {
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                width: 90%;
+            }
+
+            ul li {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            ul li img {
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
 
 <body>
+    <!-- Video Background -->
+    <video class="video-background" autoplay muted loop>
+        <source src="/static/Images/yoga3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Main Content -->
     <div class="main">
         <p class="heading">Yoga: Balance mind, body, and spirit.</p>
 
         <div class="page1">
             <div>
-                <img src="./assets/cardio2.jpg" alt="Cardio Image" height="200px">
+                <img src="/static/Images/yoga.avif" alt="Yoga image" height="200px">
             </div>
-
             <div>
                 <h2>Understanding Yoga</h2>
-                <p>Yoga is a holistic practice that combines physical postures, breathing exercises, and meditation to enhance mental and physical well-being. It promotes flexibility, strength, balance, and relaxation, helping to reduce stress and improve overall health. Practiced regularly, yoga fosters a deep connection between mind, body, and spirit, making it a powerful tool for personal growth and inner peace.</p>
+                <p> Yoga is an ancient practice that has been embraced by millions around the world for its physical,
+                    mental, and spiritual benefits. Originating in India over 5,000 years ago, yoga combines physical
+                    postures, breathing exercises, and meditation to foster overall well-being.</p>
             </div>
         </div>
 
         <div class="page2">
             <div class="left2">
                 <h2>How Yoga Benefits Your Health</h2>
-                <p>Practicing yoga regularly offers profound benefits for both body and mind. By integrating postures, breath control, and meditation, yoga not only alleviates stress but also enhances flexibility and strength. Each session helps you cultivate a deep sense of balance and inner calm, contributing to overall wellness. Discover how yoga nurtures your mental and physical health:</p>
+                <p>Practicing yoga regularly offers profound benefits for both body and mind. By integrating postures,
+                    breath control, and meditation, yoga not only alleviates stress but also enhances flexibility and
+                    strength. Each session helps you cultivate a deep sense of balance and inner calm, contributing to
+                    overall wellness. Discover how yoga nurtures your mental and physical health:</p>
             </div>
-
             <div class="right2">
                 <ul>
-                    <li><span>Lowers Blood Pressure:</span> Regular cardio helps reduce high blood pressure by making
-                        your
-                        heart stronger and more efficient at pumping blood.</li>
-                    <li><span>Improves Cholesterol Levels:</span> Cardio can raise HDL (good cholesterol) and lower LDL
-                        (bad
-                        cholesterol), reducing the risk of plaque buildup in your arteries.</li>
-                    <li><span>Reduces the Risk of Heart Disease:</span> By improving blood flow and keeping your weight
-                        in
-                        check, cardio helps lower your chances of developing heart disease.</li>
+                    <a href="https://youtu.be/149Iac5fmoE?feature=shared">
+                        <li> <img src="/static/Images/asanas.jpg" alt="Cycling">
+                            <span>Asanas</span> Yoga postures are designed to improve flexibility, strength, and
+                            balance. Each pose has specific benefits and contributes to the overall health of the body.
+                        </li>
+                    </a>
+                    <a href="https://youtu.be/JoDKbXEUrvQ?feature=shared">
+                        <li> <img src="/static/Images/pranayama.jpg" alt="Gardening">
+                            <span>Pranayama</span> Controlled breathing exercises help regulate the
+                            flow of energy in the body, enhance lung capacity, and reduce stress.
+                        </li>
+                    </a>
+                    <a href=" https://youtu.be/JslvBcIVtDg?feature=shared">
+                        <li> <img src="/static/Images/yoga medi.jpg" alt="">
+                            <span>Meditation</span> Meditation in yoga focuses on mindfulness and concentration, helping
+                            to calm the mind, improve mental clarity, and promote emotional well-being.
+                        </li>
+                    </a>
                 </ul>
             </div>
         </div>
 
         <div class="page3">
-            <div class="left3">
-                <ul>
-                    <li>
-                        <img src="./assets/cycling.jpg" alt="Cycling">
-                        <span>Aerobic Exercises:</span> Activities like brisk walking, jogging, swimming, and cycling
-                        fall
-                        under this category. They are great for maintaining a steady heart rate and building endurance.
-                    </li>
-                    <li>
-                        <img src="./assets/gardening.jpg" alt="Gardening">
-                        <span>Lifestyle Activities:</span> Even daily activities like gardening, dancing, or taking the
-                        stairs contribute to your cardio health.
-                    </li>
-                    <li>
-                        <span>High-Intensity Interval Training (HIIT):</span> This involves short bursts of intense
-                        activity
-                        followed by periods of rest. HIIT is highly effective for improving cardiovascular fitness and
-                        burning calories in a short amount of time.
-                    </li>
-                </ul>
-            </div>
-
-            <div class="right3">
-                <h2>Types of Cardiovascular Exercise</h2>
-                <p>Not all cardio is created equal, and variety is key to keeping your heart challenged and your
-                    workouts
-                    interesting. Here are some types of cardio exercises to consider:</p>
+            <div class="benefits">
+                <div class="benefits-of-yoga">
+                    <h2>Benefits of Yoga:</h2>
+                    <ul>
+                        <a href="https://youtu.be/37UhELFvPec?feature=shared">
+                            <li><strong>Physical Health</strong>: Regular practice of yoga improves flexibility,
+                                strength, and posture. It also enhances circulation and supports overall cardiovascular
+                                health.</li>
+                        </a>
+                        <a href="https://youtu.be/D6onQw3hWGg?feature=shared">
+                            <li><strong>Mental Clarity</strong>: Yoga fosters mental focus and relaxation. The
+                                combination of movement and meditation helps reduce anxiety, depression, and stress.
+                            </li>
+                        </a>
+                        <a href="https://youtu.be/rkWbKSn71vo?feature=shared">
+                            <li><strong>Emotional Balance</strong>: By promoting mindfulness and self-awareness, yoga
+                                helps practitioners develop a positive outlook and manage their emotions more
+                                effectively.</li>
+                        </a>
+                        <a href="https://youtu.be/uxKOtIY25aQ?feature=shared
+                    ">
+                            <li><strong>Spiritual Growth</strong>: Yoga encourages self-discovery and spiritual growth
+                                by connecting practitioners to their inner selves and fostering a sense of peace and
+                                purpose.</li>
+                        </a>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
