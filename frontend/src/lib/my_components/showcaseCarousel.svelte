@@ -47,10 +47,10 @@
         <Carousel.Next />
     </Carousel.Root>
     <div class="flex flex-row justify-center gap-4 items-center mt-4">
-        <Button variant="default" class="w-40">
+        <Button variant="default" class="w-30" href="http://127.0.0.1:8000/">
             Login
         </Button>
-        <Button class="w-40">Signup</Button>
+        <Button class="w-30" href="http://127.0.0.1:8000/signup/">Signup</Button>
     </div>
     </div>
 </div>

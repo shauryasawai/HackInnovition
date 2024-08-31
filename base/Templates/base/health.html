@@ -432,7 +432,7 @@
     <button onclick="initMemoryGame()">Restart</button>
 </div>
 </section>
-<section class="contact-form">
+<section id="call" class="contact-form">
     <h2 class='text1'>Book a Call with Our Health Experts</h2>
     <form method="post" action="{% url 'book_call' %}">
         {% csrf_token %}

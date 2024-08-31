@@ -28,12 +28,135 @@
         border-radius: 15px;
         margin: 50px;
     }
+    #happiness-meter {
+        width: 100%;
+        max-width: 600px;
+        height: 30px;
+        background-color: #e0e0e0;
+        border-radius: 15px;
+        margin-top: 20px;
+        position: relative;
+    }
+
+    #happiness-meter-fill {
+        height: 100%;
+        width: 0;
+        background-color: #76c7c0;
+        border-radius: 15px;
+        transition: width 0.5s ease-in-out;
+    }
+
+    #happiness-score-text {
+        margin-top: 10px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    #happiness-meter {
+        width: 100%;
+        max-width: 600px;
+        height: 30px;
+        background-color: #e0e0e0;
+        border-radius: 15px;
+        margin-top: 20px;
+        position: relative;
+    }
+
+    #happiness-meter-fill {
+        height: 100%;
+        width: 0;
+        background-color: #76c7c0;
+        border-radius: 15px;
+        transition: width 0.5s ease-in-out;
+        display: flex;
+        justify-items: center;
+        align-items: center;
+    }
+
+    #happiness-score-text {
+        margin-top: 10px;
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    /* Smiley meter styles */
+    .smiley-container {
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .smiley {
+        font-size: 100px;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .smiley.neutral {
+        transform: rotate(0deg);
+    }
+
+    .smiley.happy {
+        transform: rotate(20deg);
+    }
+
+    .smiley.sad {
+        transform: rotate(-20deg);
+    }
+    .head_line{
+        font-size: 27px;
+    }
+    .head_line1{
+        font-size: 35px;
+        text-align: center;
+    }
+    .health{
+        font-size: 35px;
+        color: white;
+    }
 </style>
 
 <body>
     <div class="main">
-        <h1>{{ quiz.title }} - Results</h1>
-        <p>Thank you for completing the quiz. Your responses have been recorded.</p>
+        <h1 class='head_line1'>{{ quiz.title }} - Results</h1>
+        <p class='head_line'>Thank you for completing the quiz. Your responses have been recorded.</p>
+    </div>
+        <div id="happiness-meter-fill"></div>
+        <h1>Quiz Result</h1>
+    
+    <div id="happiness-meter">
+        <div id="happiness-meter-fill" style="width: {{ happiness_score }}%;">
+        </div>
+    </div>
+
+    <div id="happiness-score-text">
+        Your happiness score: {{ happiness_score }}%
+    </div>
+
+    <!-- Smiley Meter -->
+    <div class="smiley-container">
+        <div id="smiley" class="smiley">😊</div>
+    </div>
+    {% if message %}
+    <a href='/book'><p class='health'>{{ message }}</p></a>
+{% endif %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var happinessScore = {{ happiness_score }};
+            var smiley = document.getElementById('smiley');
+
+            if (happinessScore >= 70) {
+                smiley.classList.add('happy');
+                smiley.textContent = '😄';
+            } else if (happinessScore <= 30) {
+                smiley.classList.add('sad');
+                smiley.textContent = '☹️';
+            } else if (happinessScore === 0) {
+                smiley.classList.add('neutral');
+                smiley.textContent = '😐';
+            } else {
+                smiley.classList.add('neutral');
+                smiley.textContent = '😊';
+            }
+        });
+    </script>
     </div>
 </body>
 

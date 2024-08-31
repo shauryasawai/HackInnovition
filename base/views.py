@@ -254,10 +254,20 @@ def quiz_list(request):
     quizzes = Quiz.objects.all()
     return render(request, 'base/quiz_list.html', {'quizzes': quizzes})
 
+from django.shortcuts import render, get_object_or_404
+from django.http import JsonResponse
+from .models import Quiz, UserResponse
+import random
+
+
 @login_required
 def take_quiz(request, quiz_id):
     quiz = get_object_or_404(Quiz, pk=quiz_id)
+    
     if request.method == 'POST':
+        answers = request.POST.getlist('answers')
+        
+        # Record user responses
         for question in quiz.questions.all():
             selected_option = request.POST.get(str(question.id))
             UserResponse.objects.create(
@@ -265,16 +275,41 @@ def take_quiz(request, quiz_id):
                 question=question,
                 selected_option=selected_option
             )
-        return render(request, 'base/quiz_result.html', {'quiz': quiz})
+        
+        if len(answers) > 0:
+            happiness_score = sum(map(int, answers)) / len(answers) * 10
+        else:
+            happiness_score = random.randint(40, 60)
+            message = "Book an Appointment to our Health Expert" if happiness_score < 50 else ""
+            
+        
+        return render(request, 'base/quiz_result.html', {'happiness_score': happiness_score, 'quiz': quiz,'message': message})
+    
     else:
         return render(request, 'base/take_quiz.html', {'quiz': quiz})
     
+# def mental_health_quiz(request):
+#     questions = Question.objects.all()
+    
+#     if request.method == "POST":
+#         answers = request.POST.getlist('answers')
+        
+#         # Calculate happiness score based on answers
+#         happiness_score = sum(map(int, answers)) / len(answers) * 10 
+        
+#         return JsonResponse({'happiness_score': happiness_score})
+
+#     return render(request, 'base/take_quiz.html', {'questions': questions})
+
 def about_us(request):
     return render(request, 'base/about.html')
+
 def bmi_calculator(request):
     return render(request, 'base/bmi.html')
 def fitness(request):
     return render(request, 'base/bmi.html')
+def book_call(request):
+    return render(request, 'base/appointment.html')
 
 from .forms import CollegeForm
 from .models import DietPlan
@@ -384,3 +419,5 @@ def weight_training_view(request):
 
 def yoga_view(request):
     return render(request, 'base/yoga.html')
+
+from .models import Question
