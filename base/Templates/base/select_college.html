@@ -2,105 +2,125 @@
 <html>
 <head>
     <title>Select Your College</title>
-</head>
-<style>/* Dark Theme CSS for Health Monitoring App */
+    <style>/* Dark Theme CSS for Health Monitoring App */
 
-    body {
-        background-color: #1e1e2f; /* Dark background */
-        color: #c7c7c7; /* Light text color for contrast */
-        font-family: 'Arial', sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        flex-direction: column;
-    }
-    
-    h1 {
-        color: #ffffff;
-        font-size: 2.5em;
-        margin-bottom: 20px;
-        text-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Text shadow effect */
-    }
-    
-    form {
-        background-color: #2a2a3e; /* Darker form background */
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); /* Deep shadow for form */
-        width: 300px;
-        text-align: center;
-    }
-    
-    form input, form select {
-        background-color: #3b3b52; /* Input field background */
-        border: 1px solid #5c5c7e; /* Slight border for inputs */
-        padding: 10px;
-        margin-bottom: 15px;
-        border-radius: 5px;
-        color: #e0e0e0; /* Input text color */
-        width: 100%;
-    }
-    
-    form button {
-        background-color: #4caf50; /* Green button background */
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 1em;
-        transition: background-color 0.3s ease;
-    }
-    
-    form button:hover {
-        background-color: #45a045; /* Slightly darker green on hover */
-    }
-    
-    h2 {
-        color: #f0f0f0;
-        font-size: 1.8em;
-        margin-top: 40px;
-        text-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Text shadow effect */
-    }
-    
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-    
-    li {
-        background-color: #2e2e44; /* Dark list item background */
-        margin: 10px 0;
-        padding: 10px;
-        border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow for list items */
-    }
-    
-    li:hover {
-        background-color: #39395b; /* Slight change on hover */
-    }
-    
-    @media (max-width: 480px) {
-        form {
-            width: 90%;
-            padding: 15px;
+        body {
+            background-color: #1e1e2f; /* Dark background */
+            color: #c7c7c7; /* Light text color for contrast */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
-    
+        
         h1, h2 {
-            font-size: 1.8em;
+            color: #ffffff;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Text shadow effect */
         }
-    
-        form button {
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 1.8em;
+            margin-top: 40px;
+        }
+        
+        form {
+            background-color: #2a2a3e; /* Darker form background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); /* Deep shadow for form */
+            width: 300px;
+            text-align: center;
+        }
+        
+        form input, form select {
+            background-color: #3b3b52; /* Input field background */
+            border: 1px solid #5c5c7e; /* Slight border for inputs */
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            color: #e0e0e0; /* Input text color */
             width: 100%;
         }
-    }
-    </style>
+        
+        form button {
+            background-color: #4caf50; /* Green button background */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        
+        form button:hover {
+            background-color: #45a045; /* Slightly darker green on hover */
+        }
+        
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .card {
+            background-color: #2e2e44; /* Dark card background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow for cards */
+            width: 45%; /* Fit two cards per row */
+            text-align: center;
+        }
+        
+        .card p {
+            margin: 0;
+            padding: 5px 0;
+            color: #e0e0e0; /* Light text color */
+        }
+        
+        @media (max-width: 768px) {
+            .card {
+                width: 100%; /* Full width on smaller screens */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            form {
+                width: 90%;
+                padding: 15px;
+            }
+        
+            h1, h2 {
+                font-size: 1.8em;
+            }
+        
+            form button {
+                width: 100%;
+            }
+        }
+        .main{
+            width: 50%
+        }
+        .text1{
+            font-size: 25px;
+        }
+        .text2{
+            font-size: 75px;
+        }
+        </style>
+</head>
 <body>
     <h1>Select Your College and Goal</h1>
-    <form method="post">
+    <form method="post" class='main'>
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Get Diet Plan</button>
@@ -108,11 +128,14 @@
 
     {% if diet_plan %}
         <h2>Suggested Diet Plan</h2>
-        <ul>
+        <div class="card-container">
             {% for plan in diet_plan %}
-                <li>{{ plan.food_item}}: {{ plan.suggested_quantity }}</li>
+                <div class="card">
+                    <p class='text1'>{{ plan.food_item}}</p>
+                    <p class='text1'>{{ plan.suggested_quantity }}</p>
+                </div>
             {% endfor %}
-        </ul>
+        </div>
     {% endif %}
 </body>
 </html>
