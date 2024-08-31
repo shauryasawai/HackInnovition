@@ -1,0 +1,40 @@
+<!-- appname/templates/appname/quiz_result.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ quiz.title }} - Results</title>
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 14px;
+        background-color: black;
+        color: white;
+    }
+
+    h1 {
+        font: bold;
+    }
+
+    .main {
+        background-color: rgb(62, 62, 62);
+        padding: 20px 30px;
+        border: none;
+        border-radius: 15px;
+        margin: 50px;
+    }
+</style>
+
+<body>
+    <div class="main">
+        <h1>{{ quiz.title }} - Results</h1>
+        <p>Thank you for completing the quiz. Your responses have been recorded.</p>
+    </div>
+</body>
+
+</html>

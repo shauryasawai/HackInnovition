@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplement Suggestions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #1e1e1e;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1, h2 {
+            color: #bb86fc;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #e0e0e0;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #333;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #bb86fc;
+            color: #1e1e1e;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #cfb2ff;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #suggestions {
+            margin-top: 2rem;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 1rem;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        th {
+            background-color: #2a2a2a;
+            color: #bb86fc;
+        }
+
+        td {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BMI-Based Supplement Suggestions</h1>
+
+        <form id="bmiForm">
+            <div class="input-group">
+                <label for="bmi">Enter Your BMI:</label>
+                <input type="number" id="bmi" name="bmi" step="0.1" required>
+            </div>
+
+            <button type="submit">Get Suggestions</button>
+        </form>
+
+        <div id="suggestions" class="hidden">
+            <h2>Suggested Supplements and Dosage</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Supplement</th>
+                        <th>Dosage</th>
+                    </tr>
+                </thead>
+                <tbody id="supplementTable">
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('bmiForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const bmi = parseFloat(document.getElementById('bmi').value);
+            let supplements = [];
+            let dosages = [];
+
+            if (bmi < 16) {
+                supplements = ['Multivitamins', 'Protein Supplements', 'Omega-3', 'Iron', 'Vitamin B12', 'Folic Acid', 'Creatine'];
+                dosages = ['1 tablet daily', '20g daily', '1g daily', '18mg daily', '2.4mcg daily', '400mcg daily', '3g daily'];
+            } else if (bmi >= 16 && bmi < 18.5) {
+                supplements = ['Multivitamins', 'Protein Supplements', 'Omega-3', 'Zinc', 'Vitamin B6', 'Whey Protein', 'BCAAs'];
+                dosages = ['1 tablet daily', '25g daily', '1g daily', '11mg daily', '1.3mg daily', '30g daily', '5g daily'];
+            } else if (bmi >= 18.5 && bmi < 22) {
+                supplements = ['Vitamin D', 'Calcium', 'Omega-3', 'Magnesium', 'Probiotics', 'Coenzyme Q10', 'Collagen Peptides'];
+                dosages = ['600 IU daily', '1000mg daily', '1g daily', '400mg daily', '10 billion CFU daily', '100mg daily', '10g daily'];
+            } else if (bmi >= 22 && bmi < 24.9) {
+                supplements = ['Vitamin C', 'B-Complex', 'Omega-3', 'Antioxidants', 'Curcumin', 'Spirulina', 'Ashwagandha'];
+                dosages = ['500mg daily', '1 tablet daily', '1g daily', '1 tablet daily', '500mg daily', '3g daily', '600mg daily'];
+            } else if (bmi >= 25 && bmi < 27) {
+                supplements = ['Probiotics', 'Green Tea Extract', 'Fiber Supplements', 'L-Carnitine', 'Garcinia Cambogia', 'Chromium Picolinate', 'Apple Cider Vinegar'];
+                dosages = ['10 billion CFU daily', '500mg daily', '25g daily', '2g daily', '1000mg daily', '200mcg daily', '2 tablespoons daily'];
+            } else if (bmi >= 27 && bmi < 29.9) {
+                supplements = ['Chromium', 'CLA', 'Fiber Supplements', 'Garcinia Cambogia', 'Berberine', 'Cinnamon Extract', 'Turmeric'];
+                dosages = ['200mcg daily', '3g daily', '30g daily', '1000mg daily', '500mg daily', '250mg daily', '1000mg daily'];
+            } else if (bmi >= 30 && bmi < 35) {
+                supplements = ['Vitamin D', 'Fish Oil', 'Fiber Supplements', 'Turmeric', 'Glucomannan', 'Green Coffee Bean Extract', 'MCT Oil'];
+                dosages = ['800 IU daily', '2g daily', '30g daily', '1000mg daily', '3g daily', '500mg daily', '1 tablespoon daily'];
+            } else if (bmi >= 35 && bmi < 40) {
+                supplements = ['Vitamin D', 'Omega-3', 'Fiber Supplements', 'Apple Cider Vinegar', 'Chitosan', '5-HTP', 'Psyllium Husk'];
+                dosages = ['1000 IU daily', '2g daily', '35g daily', '2 tablespoons daily', '1000mg daily', '100mg daily', '10g daily'];
+            } else if (bmi >= 40) {
+                supplements = ['Vitamin D', 'Omega-3', 'Fiber Supplements', 'CoQ10', 'Glucomannan', 'CLA', 'White Kidney Bean Extract'];
+                dosages = ['2000 IU daily', '3g daily', '40g daily', '100mg daily', '4g daily', '3g daily', '500mg daily'];
+            } else {
+                supplements = ['Consult a healthcare provider'];
+                dosages = ['N/A'];
+            }
+
+            const supplementTable = document.getElementById('supplementTable');
+            supplementTable.innerHTML = ''; // Clear any existing rows
+
+            for (let i = 0; i < supplements.length; i++) {
+                const row = document.createElement('tr');
+
+                const supplementCell = document.createElement('td');
+                supplementCell.textContent = supplements[i];
+                row.appendChild(supplementCell);
+
+                const dosageCell = document.createElement('td');
+                dosageCell.textContent = dosages[i];
+                row.appendChild(dosageCell);
+
+                supplementTable.appendChild(row);
+            }
+
+            document.getElementById('suggestions').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>

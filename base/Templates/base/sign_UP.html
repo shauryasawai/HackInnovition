@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="icon" href="{% static 'img/favicon.png' %}">
+    <title>Welcome to Librainian</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <style>
+        /* General styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #121212;
+            background: url("https://media.istockphoto.com/id/1287504319/photo/fitness-equipment-on-the-floor-at-the-gym.jpg?s=612x612&w=0&k=20&c=YdX22jy89A_E5Id-GvlRbcgIZIiSlIJpN2u0NTgTdDc=");
+            color: #ffffff;
+            background-size: cover;
+            color: #ffffff;
+            display: flex;
+            font-family: DM Sans, Arial, sans-serif;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            box-sizing: border-box;
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 8px 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .form-row > div {
+            flex: 1;
+            margin-right: 10px;
+        }
+        .form-row > div:last-child {
+            margin-right: 0;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #007bff;
+            color: #ffffff;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+        a:active {
+            background: #0056b3;
+        }
+        a:visited {
+            color: #0056b3;
+        }
+        .image{
+            length: 150px;
+            width: 150px;
+            margin-left: 220px;
+            border-radius: 300px;
+        }
+        .box1{
+            color: white;
+            font: 50px;
+            family: bold;
+            
+        }
+    </style>
+
+</head>
+<body class="">
+    <div class="" style="width: 80%; max-width: 600px;">
+        <div class="">
+            <div class="mb-8 text-center">
+                <img class='image' src="\static\Images\logo.png" alt="Librainian" class="">
+            </div>
+            <h1 class="">Create a Health Track Account</h1>
+            <form method="post">
+                <div class='box1'>
+                {% csrf_token %}
+                {{ form.as_p }}
+                </div>
+                <button type="submit" class="">Sign Up</button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="login">Already have an account? <a href="{% url 'login' %}" class="">Login</a>
+    </div>
+    {% if form.errors %}
+        <ul>
+            {% for field in form %}
+                {% for error in field.errors %}
+
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <script src="{% static 'js/clarity.js' %}"></script>
+</body>
+</html>

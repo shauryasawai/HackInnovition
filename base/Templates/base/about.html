@@ -1,0 +1,124 @@
+<!-- about/templates/about/about.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>/* about/static/about/css/styles.css */
+
+        body {
+            background-color: #121212;
+            color: #E0E0E0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease;
+        }
+        
+        .about-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #1E1E1E;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .about-container:hover {
+            background-color: #2C2C2C;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+        
+        h1 {
+            color: #BB86FC;
+            text-align: center;
+        }
+        
+        p {
+            line-height: 1.6;
+            font-size: 18px;
+        }
+        
+        .team-section {
+            margin-top: 40px;
+        }
+        
+        h2 {
+            text-align: center;
+            color: #03DAC5;
+            margin-bottom: 20px;
+        }
+        
+        .team-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .team-member {
+            background-color: #252525;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .team-member img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        
+        .team-member h3 {
+            color: #BB86FC;
+            margin-bottom: 5px;
+        }
+        
+        .team-member p {
+            color: #E0E0E0;
+            font-size: 16px;
+        }
+        .txt1{
+            font-size:23px;
+        }
+        .txt2{
+            font-size:20px;
+        }
+        </style>
+</head>
+<body>
+    <div class="about-container">
+        <h1>About Us</h1>
+        <p class='txt1'>Welcome to HealthTrack. Our team is dedicated to innovation and excellence.</p>
+        <br>
+        <p class='txt2'>When we first entered NIT Rourkela, we encountered several challenges that significantly impacted our physical and mental well-being. We struggled with maintaining our health due to inadequate guidance on proper nutrition, especially with the college menu not catering to our specific dietary needs.  To address these issues, we developed Health Track—a web app designed to help students navigate these challenges by providing personalized health tracking and nutrition advice tailored to the college environment. </p>
+        <br>
+        <p class='txt1'>Join us in using Health Track to support your well-being throughout your college journey.</p>
+        <div class="team-section">
+            <h2>Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://media.licdn.com/dms/image/v2/D5603AQH5lCJCdZr-AA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1720171211307?e=1730332800&v=beta&t=m415zNIp9-iH2uKKWLTAavIkTbnSitGLiN6MyBYQBIQ" alt="Team Member 1">
+                    <h3>Shauryaman</h3>
+                </div>
+                <div class="team-member">
+                    <img src="/static/Images/teja.png" alt="Team Member 2">
+                    <h3>Teja</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

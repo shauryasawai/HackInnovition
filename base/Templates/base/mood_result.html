@@ -1,0 +1,39 @@
+<!-- predictor/templates/predictor/result.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        h1 {
+            color: #bb86fc;
+        }
+        a {
+            color: #bb86fc;
+            text-decoration: none;
+            border: 1px solid #bb86fc;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        a:hover {
+            background-color: #bb86fc;
+            color: #121212;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your predicted mood is: {{ mood }}</h1>
+    <a href="{% url 'mood_predictor' %}">Predict another mood</a>
+</body>
+</html>

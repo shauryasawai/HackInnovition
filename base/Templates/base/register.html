@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'img/favicon.png' %}">
+    <title>Register</title>
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 14px;
+        background-color: black;
+        color: white;
+    }
+
+    h1 {
+        font: bold;
+    }
+
+    .main {
+        background-color: rgb(62, 62, 62);
+        padding: 20px 30px;
+        border: none;
+        border-radius: 15px;
+        margin: 50px;
+    }
+    .btn{
+        background-color: rgb(10, 68, 213);
+        color: white;
+        border: none;
+        border-radius: 7px;
+        font-size: 20px;
+        padding: 8px 18px;
+    }
+</style>
+
+<body>
+    <div class="main">
+        <h1>Register</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn" type="submit">Register</button>
+        </form>
+    </div>
+    <script src="{% static 'js/clarity.js' %}"></script>
+</body>
+
+</html>

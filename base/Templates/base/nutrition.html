@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition and Balanced Diet</title>
+    <style>
+        body {
+
+            /* background-color: #121212; */
+                background-image: url("/static/Images/Nutrition-bg.jpeg");
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                color: #ffffff;
+                font-family: 'Arial',
+                sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                margin: 0;
+                flex-direction: column;
+            }
+
+            .container {
+                text-align: center;
+                padding: 20px;
+                border: 1px solid #333;
+                border-radius: 10px;
+                background-color: #1e1e1e;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                animation: fadeIn 1s ease-in-out;
+                max-width: 800px;
+                width: 100%;
+                margin: 20px;
+            }
+
+            h1 {
+                margin-bottom: 20px;
+                font-size: 2em;
+            }
+
+            .buttons {
+                margin-bottom: 20px;
+            }
+
+            .btn {
+                background-color: #3b3b3b;
+                color: #ffffff;
+                border: none;
+                padding: 10px 20px;
+                margin: 10px;
+                cursor: pointer;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+            }
+
+            .btn:hover {
+                background-color: #2ebb0b;
+            }
+
+            .diet-info {
+                display: none;
+                text-align: left;
+                animation: slideIn 0.5s ease-in-out;
+                margin-top: 20px;
+            }
+
+            #diet-image {
+                max-width: 100%;
+                border-radius: 10px;
+                margin-top: 10px;
+            }
+
+            .diet-plan {
+                margin-top: 20px;
+            }
+
+            .diet-plan ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .diet-plan li {
+                background: #2e2e2e;
+                padding: 10px;
+                margin: 5px 0;
+                border-radius: 5px;
+            }
+
+            /* Animations */
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes slideIn {
+                from {
+                    transform: translateY(20px);
+                    opacity: 0;
+                }
+
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Nutrition and Balanced Diet</h1>
+        <p>Choose your status:</p>
+        <div class="buttons">
+            <button class="btn" onclick="showDiet('student')">School Students</button>
+            <button class="btn" onclick="showDiet('professional')">Working Professional</button>
+            <button class="btn" onclick="showDiet('retired')">Retired</button>
+            <a href="/diet"><button class="btn">College Students</button></a>
+        </div>
+        <div id="diet-info" class="diet-info">
+            <h2 id="diet-title"></h2>
+            <p id="diet-description"></p>
+            <img id="diet-image" src="" alt="Diet Image">
+            <div id="diet-plan" class="diet-plan">
+                <h3>Sample Diet Plan:</h3>
+                <ul id="diet-list"></ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showDiet(status) {
+            const dietInfo = document.getElementById('diet-info');
+            const dietTitle = document.getElementById('diet-title');
+            const dietDescription = document.getElementById('diet-description');
+            const dietImage = document.getElementById('diet-image');
+            const dietList = document.getElementById('diet-list');
+
+            let title, description, imageUrl, dietPlan;
+
+            if (status === 'student') {
+                title = 'Balanced Diet for Students';
+                description = 'Students need a balanced diet rich in proteins, vitamins, and minerals. Include foods like eggs, lean meat, fruits, vegetables, and whole grains.';
+                imageUrl = 'https://thedaily9.in/wp-content/uploads/2022/10/5f6b02a2544b1302f58b79fa_Indian-diets.jpg';
+                imageElement = `<img src="${imageUrl}" alt="Balanced Diet for Students" style="width: 20px; height: 10px; object-fit: cover;">`;
+                dietPlan = [
+                    'Breakfast: Vegetable Upma with a glass of milk',
+                    'Mid-morning snack: Fresh fruit salad with a squeeze of lemon',
+                    'Lunch: Brown rice with dal tadka and mixed vegetable sabzi',
+                    'Afternoon snack: Sprouts chaat with chopped onions, tomatoes, and coriander',
+                    'Dinner: Chapati with grilled paneer and a side of salad',
+                    'Evening snack: Masala chai with a handful of roasted chana'
+                ];
+            } else if (status === 'professional') {
+                title = 'Balanced Diet for Working Professionals';
+                description = 'Working professionals need a diet that provides sustained energy. Include foods like nuts, seeds, whole grains, lean proteins, and plenty of water.';
+                imageUrl = 'https://lifemathmoney.b-cdn.net/wp-content/uploads/2020/09/desi-diet.jpg';
+                imageElement = `<img src="${imageUrl}" alt="Balanced Diet for Students" style="width: 20px; height: 10px; object-fit: cover;">`;
+                dietPlan = [
+                    'Breakfast: Masala oats with vegetables and a glass of buttermilk',
+                    'Mid-morning snack: A handful of mixed nuts and seeds',
+                    'Lunch: Quinoa salad with chickpeas, cucumber, tomatoes, and lemon dressing',
+                    'Afternoon snack: Roasted sweet potato wedges with a sprinkle of chaat masala',
+                    'Dinner: Grilled chicken tikka with brown rice and sautéed spinach',
+                    'Evening snack: Green tea with a few pieces of dark chocolate'
+                ];
+            } else if (status === 'retired') {
+                title = 'Balanced Diet for Retired Individuals';
+                description = 'Retired individuals should focus on foods that support bone health and digestion. Include dairy products, leafy greens, and fiber-rich foods.';
+                imageUrl = 'https://thumbs.dreamstime.com/b/balanced-vegetarian-indian-food-plate-thali-182688475.jpg';
+                imageElement = `<img src="${imageUrl}" alt="Balanced Diet for Students" style="width: 20px; height: 10px; object-fit: cover;">`;
+                dietPlan = [
+                    'Breakfast: Poha with peas and a side of fresh fruit',
+                    'Mid-morning snack: A glass of warm milk with turmeric and honey',
+                    'Lunch: Whole wheat roti with daal and a side of mixed vegetable salad',
+                    'Afternoon snack: Steamed moong dal chilla with green chutney',
+                    'Dinner: Fish curry with steamed rice and a side of sautéed vegetables',
+                    'Evening snack: Fresh papaya slices with a sprinkle of chaat masala'
+                ];
+            }
+
+            dietTitle.textContent = title;
+            dietDescription.textContent = description;
+            dietImage.src = imageUrl;
+
+            dietList.innerHTML = '';
+            dietPlan.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = item;
+                dietList.appendChild(listItem);
+            });
+
+            dietInfo.style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

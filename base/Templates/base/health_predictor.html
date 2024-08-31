@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health App</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .box {
+            background-color: #1f1f1f;
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .box a {
+            text-decoration: none;
+            color: #bb86fc;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .box:hover {
+            transform: scale(1.1);
+            background-color: #333;
+        }
+
+        #blood-sugar-box {
+            border-color: #ff7043;
+        }
+
+        #mood-box {
+            border-color: #42a5f5;
+        }
+
+        #bmi-box {
+            border-color: #e68b0c;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box box1" id="blood-sugar-box">
+            <a href="/predict">Blood Sugar Predictor</a>
+        </div>
+        <div class="box box2" id="mood-box">
+            <a href="/mood">Mood Predictor</a>
+        </div>
+        <div class="box box3" id="bmi-box">
+            <a href="/bmi">BMI Calculator</a>
+        </div>
+    </div>
+
+    <script>
+        const box1 = document.querySelector('.box1');
+
+        box1.addEventListener('mouseover', function () {
+            document.body.style.backgroundImage = "url(/static/Images/360_F_556151036_wzPSCGcY6GZKo4rnSD5fIdTEYyTTVKjy.jpg)";
+            document.body.style.backgroundColor = "#373e40"
+            document.body.style.backgroundRepeat = "no-repeat";
+            document.body.style.backgroundSize = "fit";
+            document.body.style.backgroundPosition = "center";
+            document.body.style.zIndex = '10';
+        });
+
+        box1.addEventListener('mouseout', function () {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundColor = '';
+            document.body.style.backgroundRepeat = '';
+            document.body.style.backgroundSize = '';
+            document.body.style.backgroundPosition = '';
+        });
+
+
+        const box2 = document.querySelector('.box2');
+
+        box2.addEventListener('mouseover', function () {
+            document.body.style.backgroundImage = "url(/static/Images/mood-predictor.png)";
+            document.body.width.backgroundImage = window.innerWidth + '100px';
+            document.body.style.backgroundColor = "#0d173f"
+            document.body.style.backgroundRepeat = "no-repeat";
+            document.body.style.backgroundSize = "fit";
+            document.body.style.backgroundPosition = "top";
+            document.body.style.zIndex = '10';
+        });
+
+        box2.addEventListener('mouseout', function () {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundColor = '';
+            document.body.style.backgroundRepeat = '';
+            document.body.style.backgroundSize = '';
+            document.body.style.backgroundPosition = '';
+        });
+
+
+        const box3 = document.querySelector('.box3');
+
+        box3.addEventListener('mouseover', function () {
+            document.body.style.backgroundImage = "url(/static/Images/Gym-bmi-bgimg.jpg)";
+            document.body.width.backgroundImage = window.innerWidth + '100px';
+            document.body.style.backgroundColor = "#ffff94"
+            document.body.style.backgroundRepeat = "no-repeat";
+            document.body.style.backgroundSize = "contain";
+            document.body.style.backgroundPosition = "top";
+            document.body.style.zIndex = '10';
+        });
+
+        box3.addEventListener('mouseout', function () {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundColor = '';
+            document.body.style.backgroundRepeat = '';
+            document.body.style.backgroundSize = '';
+            document.body.style.backgroundPosition = '';
+        });
+
+    </script>
+</body>
+
+</html>

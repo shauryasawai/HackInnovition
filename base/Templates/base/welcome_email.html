@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Healthify</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #FFFFFF;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1E1E1E;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        .header img {
+            width: 150px;
+            height: auto;
+        }
+
+        .content {
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .content h1 {
+            color: #4CAF50;
+        }
+
+        .content p {
+            margin: 10px 0;
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .button-container a {
+            background-color: #4CAF50;
+            color: #FFFFFF;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 12px;
+            color: #888888;
+        }
+
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="/static/Images/Screenshot 2024-08-25 231441" alt="Healthify Logo">
+        </div>
+        <div class="content">
+            <h1>Welcome to Health Track</h1>
+            <p>Dear {{ user.get_username }},</p>
+            <p>Thank you for joining Healthify! We are thrilled to have you on board. Our app is designed to help you monitor your overall health and achieve your wellness goals. Whether you're tracking your fitness progress, managing your diet, or keeping an eye on your mental well-being, Healthify is here to support you every step of the way.</p>
+            <p>To get started, click the button below to explore your dashboard and begin your health journey:</p>
+            <div class="button-container">
+                <a href="[Dashboard URL]">Go to Dashboard</a>
+            </div>
+            <p>If you have any questions, feel free to <a href="sawaisushil@gmail.com">contact our support team</a>.</p>
+            <p>We're excited to see what you'll accomplish!</p>
+            <p>Best regards,</p>
+            <p>The Health Track Team</p>
+        </div>
+        <div class="footer">
+            <p>Health Track | Natioanal Institute of Technology, Rourkela</p>
+        </div>
+    </div>
+</body>
+</html>
