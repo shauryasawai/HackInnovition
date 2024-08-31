@@ -25,7 +25,7 @@
         <div class="text-muted-foreground py-2 text-center text-sm">
             Slide {current} of {count}
         </div>
-    <Carousel.Root bind:api class="w-[700px]">
+    <Carousel.Root bind:api class="w-[650px]">
         <Carousel.Content>
             {#each Array(5) as _, i (i)}
                 <Carousel.Item>
