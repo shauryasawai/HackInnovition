@@ -1,3 +1,4 @@
+from urllib import request
 from django.shortcuts import render,redirect
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
@@ -423,3 +424,39 @@ def yoga_view(request):
     return render(request, 'base/yoga.html')
 
 from .models import Question
+
+# chatbot/views.py
+from django.shortcuts import render, reverse
+from django.contrib.auth.decorators import login_required
+from .models import ChatBot
+from django.http import HttpResponseRedirect, JsonResponse
+import google.generativeai as genai
+
+# Create your views here.
+# add here to your generated API key
+genai.configure(api_key="AIzaSyDJwe1QlhnMiB8zUt0cHkAmOdsdqZcr9Sg")
+
+
+def ask_question(request):
+    if request.method == "POST":
+        text = request.POST.get("text")
+        model = genai.GenerativeModel("gemini-pro")
+        chat = model.start_chat()
+        response = chat.send_message(text)
+        user = request.user
+        ChatBot.objects.create(text_input=text, gemini_output=response.text, user=user)
+        # Extract necessary data from response
+        response_data = {
+            "text": response.text,  # Assuming response.text contains the relevant response data
+        }
+        return JsonResponse({"data": response_data})
+    else:
+        return HttpResponseRedirect(
+            reverse("chat")
+        )  # Redirect to chat page for GET requests
+
+def chat(request):
+    user = request.user
+    chats = ChatBot.objects.filter(user=user)
+    return render(request, "base/chat.html", {"chats": chats})
+

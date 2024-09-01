@@ -29,6 +29,8 @@ urlpatterns=[
   path('weight_training/', views.weight_training_view, name='weight_training_view'),
   path('yoga/', views.yoga_view, name='yoga_view'),
   path('book/', views.book_call, name='book_call'),
+  path('chat/', views.chat, name='chat'),
+  path('ask_question/', views.ask_question, name="ask_question"),
 
 
 
