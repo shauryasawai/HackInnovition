@@ -5,7 +5,7 @@
 
         <div id="outer" class="flex flex-row">
             <div id="left" class="flex flex-col items-center translate-y-3">
-                <div class="h-6 w-6 rounded-[0.75rem] bg-white z-0"></div>
+                <div class="dotshadow h-6 w-6 rounded-[0.75rem] bg-white z-0"></div>
                 <div class="bg-zinc-500 w-[2px] h-[100px] grow -z-10"></div>
             </div>
             <div id="right" class="ml-4 flex flex-col">
@@ -24,7 +24,7 @@
 
         <div id="outer" class="flex flex-row">
             <div id="left" class="flex flex-col items-center translate-y-3">
-                <div class="h-6 w-6 rounded-[0.75rem] bg-white z-0"></div>
+                <div class="dotshadow h-6 w-6 rounded-[0.75rem] bg-white z-0"></div>
                 <div class="bg-zinc-500 w-[2px] h-[100px] grow -z-10"></div>
             </div>
             <div id="right" class="ml-4 flex flex-col">
@@ -43,7 +43,7 @@
 
         <div id="outer" class="flex flex-row">
             <div id="left" class="flex flex-col items-center translate-y-3">
-                <div class="h-6 w-6 rounded-[0.75rem] bg-white z-0"></div>
+                <div class="dotshadow h-6 w-6 rounded-[0.75rem] bg-white z-0"></div>
                 <div class="bg-zinc-500 w-[2px] h-[100px] grow -z-10"></div>
             </div>
             <div id="right" class="ml-4 flex flex-col">
@@ -60,7 +60,7 @@
 
         <div id="outer" class="flex flex-row">
             <div id="left" class="flex flex-col items-center translate-y-3">
-                <div class="h-6 w-6 rounded-[0.75rem] bg-white z-0"></div>
+                <div class="dotshadow h-6 w-6 rounded-[0.75rem] bg-white z-0"></div>
                 <div class="bg-zinc-500 w-[2px] h-[100px] grow -z-10"></div>
             </div>
             <div id="right" class="ml-4 flex flex-col">
@@ -79,7 +79,7 @@
 
         <div id="outer" class="flex flex-row">
             <div id="left" class="flex flex-col items-center translate-y-3">
-                <div class="h-6 w-6 rounded-[0.75rem] bg-white z-0"></div>
+                <div class="dotshadow h-6 w-6 rounded-[0.75rem] bg-white z-0"></div>
                 <!-- <div class="bg-zinc-500 w-[2px] h-[100px] grow -z-10"></div> -->
             </div>
             <div id="right" class="ml-4 flex flex-col">
@@ -96,3 +96,11 @@
 
     </div>
 </div>
+
+
+<style>
+    .dotshadow {
+        filter: drop-shadow(0px 0px 15px #ffffff);
+        /* transition: linear 100ms; */
+    }
+</style>
