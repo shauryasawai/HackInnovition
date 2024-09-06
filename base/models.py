@@ -104,3 +104,29 @@ class ChatBot(models.Model):
     date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     def __str__(self):
         return self.text_input
+    
+#############################################
+class UserProfile(models.Model):
+    DIET_CHOICES = [
+        ('vegan', 'Vegan'),
+        ('keto', 'Keto'),
+        ('vegetarian', 'Vegetarian'),
+        ('paleo', 'Paleo'),
+    ]
+
+    GOAL_CHOICES = [
+        ('weight_loss', 'Weight Loss'),
+        ('muscle_gain', 'Muscle Gain'),
+        ('maintenance', 'Maintenance'),
+    ]
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    dietary_preference = models.CharField(max_length=50, choices=DIET_CHOICES)
+    allergies = models.TextField(blank=True)
+    health_goals = models.CharField(max_length=50, choices=GOAL_CHOICES)
+    available_ingredients = models.TextField()
+
+class MealPlan(models.Model):
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    meal = models.TextField()  
+    created_at = models.DateTimeField(auto_now_add=True)

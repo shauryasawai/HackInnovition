@@ -434,7 +434,7 @@ import google.generativeai as genai
 
 # Create your views here.
 # add here to your generated API key
-genai.configure(api_key="AIzaSyDJwe1QlhnMiB8zUt0cHkAmOdsdqZcr9Sg")
+genai.configure(api_key=os.getenv('API_KEY'))
 
 
 def ask_question(request):
@@ -459,4 +459,59 @@ def chat(request):
     user = request.user
     chats = ChatBot.objects.filter(user=user)
     return render(request, "base/chat.html", {"chats": chats})
+
+
+################################################################################
+
+import requests  # Assuming Gemini uses HTTP requests
+from .models import UserProfile, MealPlan
+from .forms import UserInputForm
+import json
+
+
+def generate_meal_plan(request):
+    if request.method == 'POST':
+        form = UserInputForm(request.POST)
+        if form.is_valid():
+            # Extract data from the form
+            dietary_preference = form.cleaned_data['dietary_preference']
+            allergies = form.cleaned_data['allergies']
+            health_goals = form.cleaned_data['health_goals']
+            available_ingredients = form.cleaned_data['available_ingredients']
+            
+            gemini_api_url = os.getenv('API_URL')
+            headers = {
+                'Authorization': 'Bearer your-gemini-api-key',
+                'Content-Type': 'application/json',
+            }
+            payload = {
+                'dietary_preference': dietary_preference,
+                'allergies': allergies,
+                'health_goals': health_goals,
+                'available_ingredients': available_ingredients,
+            }
+
+            response = requests.post(gemini_api_url, json=payload, headers=headers)
+            
+            if response.status_code == 200:
+                response_data = response.json(),
+                
+                
+                print(json.dumps(response_data, indent=4))
+                
+                generated_meal = response.json().get('meal_plan', 'No meal plan generated')
+                # Save to MealPlan model
+                user_profile = UserProfile.objects.get(user=request.user)
+                meal_plan = MealPlan(user=user_profile, meal=generated_meal)
+                meal_plan.save()
+
+                return render(request, 'base/meal_plan.html', {'meal_plan': meal_plan})
+            else:
+                error_message = 'Failed to generate meal plan. Please try again.'
+                return render(request, 'base/generate_meal_plan.html', {'form': form, 'error': error_message})
+    else:
+        form = UserInputForm()
+
+    return render(request, 'base/generate_meal_plan.html', {'form': form})
+
 

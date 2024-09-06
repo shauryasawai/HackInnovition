@@ -83,3 +83,26 @@ class HealthInputForm(forms.Form):
     gender = forms.ChoiceField(choices=GENDER_CHOICES)
     diastolic_bp = forms.IntegerField(label="Diastolic Blood Pressure")
     family_history = forms.ChoiceField(choices=FAMILY_HISTORY_CHOICES)
+    
+###########################################################################################
+
+from django import forms
+
+class UserInputForm(forms.Form):
+    DIET_CHOICES = [
+        ('vegan', 'Vegan'),
+        ('keto', 'Keto'),
+        ('vegetarian', 'Vegetarian'),
+        ('paleo', 'Paleo'),
+    ]
+
+    GOAL_CHOICES = [
+        ('weight_loss', 'Weight Loss'),
+        ('muscle_gain', 'Muscle Gain'),
+        ('maintenance', 'Maintenance'),
+    ]
+
+    dietary_preference = forms.ChoiceField(choices=DIET_CHOICES)
+    allergies = forms.CharField(widget=forms.Textarea, required=False)
+    health_goals = forms.ChoiceField(choices=GOAL_CHOICES)
+    available_ingredients = forms.CharField(widget=forms.Textarea)

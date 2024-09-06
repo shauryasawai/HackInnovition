@@ -31,6 +31,7 @@ urlpatterns=[
   path('book/', views.book_call, name='book_call'),
   path('chat/', views.chat, name='chat'),
   path('ask_question/', views.ask_question, name="ask_question"),
+  path('generate-meal-plan/', views.generate_meal_plan, name='generate_meal_plan'),
 
 
 
